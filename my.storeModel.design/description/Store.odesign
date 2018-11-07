@@ -4,6 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="storeDiagram" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
       <metamodel href="http://www.palladiosimulator.org/pcm/dataprocessing/0.1/#//repository"/>
+      <metamodel href="http://www.palladiosimulator.org/pcm/dataprocessing/0.1/#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="StoreEdge" sourceMapping="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='BasicComponent']" targetMapping="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='StoreContainer']" targetFinderExpression="service:getStoreContainer()">
           <style sizeComputationExpression="2">
@@ -46,11 +47,11 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="StoreCreation" nodeMappings="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='StoreContainer']/@subNodeMappings[name='Store']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="StoreCreation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='StoreContainer']/@subNodeMappings[name='Store']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Store" referenceName="stores"/>
               </firstModelOperations>
             </initialOperation>
