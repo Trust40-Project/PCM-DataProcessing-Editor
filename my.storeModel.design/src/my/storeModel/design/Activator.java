@@ -1,5 +1,5 @@
 package my.storeModel.design;
-
+ 
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +35,7 @@ public class Activator extends AbstractUIPlugin {
       super.start(context);
 	  plugin = this;
 	  viewpoints = new HashSet<Viewpoint>();
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/storeModel.odesign")); 
+	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/Store.odesign")); 
     }
 
     /*

@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Store" version="12.0.0.2017041100">
   <ownedViewpoints name="MyViewPoint">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="storeDiagram" domainClass="repository.Repository" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="storeDiagram" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
       <metamodel href="http://www.palladiosimulator.org/pcm/dataprocessing/0.1/#//repository"/>
       <metamodel href="http://www.palladiosimulator.org/pcm/dataprocessing/0.1/#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="StoreEdge" sourceMapping="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='BasicComponent']" targetMapping="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='StoreContainer']" targetFinderExpression="service:getStoreContainer()">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
+        <containerMappings name="BasicComponent" deletionDescription="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteBasicComponent']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository::BasicComponent">
+          <subContainerMappings name="StoreContainer" semanticCandidatesExpression="service:getStoreContainer()" synchronizationLock="true" domainClass="repository::StoreContainer" childrenPresentation="List">
+            <subNodeMappings name="Store" semanticCandidatesExpression="feature:stores" domainClass="repository::Store">
+              <style xsi:type="style:SquareDescription" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW" width="1" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="BasicComponent" semanticCandidatesExpression="feature:components__Repository" domainClass="repository::BasicComponent">
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
-          </style>
-        </containerMappings>
-        <containerMappings name="StoreContainer" semanticCandidatesExpression="service:getAllStoreContainers()" domainClass="repository::StoreContainer" childrenPresentation="List">
-          <subNodeMappings name="Store" semanticCandidatesExpression="feature:stores" domainClass="repository::Store">
-            <style xsi:type="style:SquareDescription" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW" width="1" height="1">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
         <toolSections name="Tools">
@@ -47,12 +39,33 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="StoreCreation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='StoreContainer']/@subNodeMappings[name='Store']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="StoreCreation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='StoreContainer']/@subNodeMappings[name='Store']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Store" referenceName="stores"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="StoreContainerCreation" precondition="aql:self.hasAStoreContainer()" forceRefresh="true" containerMappings="//@ownedViewpoints[name='MyViewPoint']/@ownedRepresentations[name='storeDiagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='StoreContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.openDialogForDataSpecification()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::StoreContainer" referenceName="storeContainers">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.connectComponentWithStoreContainer(container)"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteBasicComponent">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteBasicComponent()">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
