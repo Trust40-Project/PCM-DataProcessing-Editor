@@ -2,10 +2,12 @@ package my.storeModel.design;
  
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 //org.eclipse.emf.edit.ui.action
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -18,6 +20,8 @@ import org.eclipse.sirius.business.internal.session.SessionTransientAttachment;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
@@ -30,7 +34,7 @@ import org.palladiosimulator.pcm.dataprocessing.profile.api.ProfileConstants;
  * The services class used by VSM.
  */
 public class Services {
-	
+	private EObject obj;
 
 	/**
 	 * if the Component has the Stereotype StoreHaving, return the connected StoreContainer
@@ -85,57 +89,88 @@ public class Services {
 
 	}
 	
+	
+	public EObject addRessourceForDataSpecification(EObject self) {
+		if(obj != null) {
+			System.out.println("choosen"+ obj);
+			return obj;
+		} else {
+			return openDialogForDataSpecification(self);
+		}
+	}
+	
+
 	public EObject openDialogForDataSpecification(EObject self) {
-		
 		Shell shell = Display.getCurrent().getActiveShell();
+		
+		shell = getShell();
 		shell.open();
+		
+		
 		
 		ResourceDialog dia = new ResourceDialog(shell, "open a resource", SWT.OPEN);
 		
 		dia.open();
-		
+
 		String uri = dia.getURIText();
 		
 		System.out.println ("Selected: "+uri);
 		
-        ResourceSet resSet = new ResourceSetImpl();
+        ResourceSet resSet = self.eResource().getResourceSet();;
 
         Resource resource = resSet.getResource(URI.createURI(uri), true);
+        Session session = SessionManager.INSTANCE.getSession(self);
+        Set<Resource> var = session.getReferencedSessionResources();
+        session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
         
-		EObject obj = resource.getContents().get(0);
+		obj = resource.getContents().get(0);
 		
 		System.out.println("loaded resource: "+obj.toString());
-		
 		return obj;
 	}
 	
+	
+	/*
+	 * returns a new shell in case of 
+	 */
+	public static Shell getShell() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		  if (window == null) {
+		    IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+		    if (windows.length > 0) {
+		       return windows[0].getShell();
+		    }
+		  }
+		  else {
+		    return window.getShell();
+		  }
+		  return null;
+		}
+	
 	public EObject connectComponentWithStoreContainer(EObject target, EObject source) {
-		
 		// var source is the basic component without a connection
 		// var target is the storeContainer to connect with the basic component
-		
 		StereotypeAPI.applyStereotype(source, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING);
-		
 		final EList<Stereotype> applicableStereotypes = StereotypeAPI.getApplicableStereotypes(source, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING);
-        if (applicableStereotypes.size() != 1) {
+		if (applicableStereotypes.size() != 1) {
+        	System.out.println("runtime" + source);
             throw new RuntimeException("ApplyStereotype based on name failed: name \"" + ProfileConstants.STEREOTYPE_NAME_STORE_HAVING
                     + "\" not uniquely found (" + applicableStereotypes.size() + " times)!");
         }
         
-        Stereotype stType = applicableStereotypes.get(0);
-        
+		Stereotype stType = applicableStereotypes.get(0);
+
         StereotypeApplication compStTypeApp = StereotypeAPI.getStereotypeApplication(source, stType);
         
         EStructuralFeature taggedValue = stType.getTaggedValue(ProfileConstants.TAGGED_VALUE_NAME_STORE_HAVING_CONTAINER);
-        
+
         compStTypeApp.eSet(taggedValue, target);
+
+  //      Session sessiont = SessionManager.INSTANCE.getSession(source);
         
-        Session session = SessionManager.INSTANCE.getSession(target.eContainer());
-        Session sessiont = SessionManager.INSTANCE.getSession(target);
+//        System.out.println("session of data spec: "+session.toString());
         
-        System.out.println("session of data spec: "+session.toString());
-        
-        System.out.println("session of storeC: "+sessiont.toString());
+        //System.out.println("session of storeC: "+sessiont.toString());
         
         //target.eAdapters().add(new SessionTransientAttachment(session));
         
