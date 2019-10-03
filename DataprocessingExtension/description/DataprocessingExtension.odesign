@@ -14,8 +14,15 @@
           </style>
         </edgeMappings>
         <containerMappings name="OperationSignature" domainClass="repository::OperationSignature" childrenPresentation="List">
-          <subNodeMappings name="DateRefinement" semanticCandidatesExpression="var:self" domainClass="Data">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:getDataRefinement()" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="ParameterBasedData" semanticCandidatesExpression="service:getParameterBasedData()" domainClass="ParameterBasedData">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:nameOfParameterBasedData()" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="ReturnBasedData" semanticCandidatesExpression="service:getReturnBasedData()" domainClass="ParameterBasedData">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:nameOfResultBasedData()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>

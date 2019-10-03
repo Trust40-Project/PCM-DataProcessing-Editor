@@ -17,7 +17,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.palladiosimulator.editors.sirius.repository.DataprocessingExtension
-Import-Package: org.palladiosimulator.mdsdprofiles.api,
+Import-Package: org.eclipse.emf.common.util,
+ org.palladiosimulator.mdsdprofiles.api,
  org.palladiosimulator.pcm.dataprocessing.dataprocessing.data,
  org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository,
  org.palladiosimulator.pcm.dataprocessing.profile.api,
