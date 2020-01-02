@@ -1,16 +1,13 @@
 package org.palladiosimulator.editors.sirius.repository.DataprocessingExtension;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ResultBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.OperationSignatureDataRefinement;
@@ -21,9 +18,7 @@ import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.Interface;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationSignature;
-import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.repository.RequiredRole;
 
 
 /**
@@ -70,7 +65,6 @@ public class Services<E> {
     	}
     	
     	//TODO warum ist hier ein elemeent ohne applieter stereotype??
-    	System.out.println(signature.getEntityName());
     	return null;
     }
     
@@ -86,7 +80,6 @@ public class Services<E> {
     	    	
     	    	return refinements.getResultRefinements();
     	}
-    	System.out.println(signature.getEntityName());
     	return null;
     }
     
@@ -97,13 +90,11 @@ public class Services<E> {
     
     public Collection<ResultBasedData> getResultBasedData(OperationSignature signature) {
     	OperationSignatureDataRefinement refinements = StereotypeAPI.getTaggedValue(signature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
-    	
-    	//System.out.println(refinements.toString());
     	return refinements.getResultRefinements();
     }
     
     public String nameOfResultBasedData(ResultBasedData param) {
-    	return "return " + param.getEntityName();
+    	return "return: " + param.getEntityName();
     }
     
     
@@ -119,10 +110,14 @@ public class Services<E> {
     public String getStoreName(Store store) {
     	return store.getEntityName();
     }
+    
 
-    
-    public EObject getObj(EObject obj) {
-    	return obj;
+    public Collection<Characteristic> getCharacteristics(BasicComponent basicComponent) {
+    	Set<BasicComponent> basicComponentSet = new HashSet<>();
+    	basicComponentSet.add(basicComponent);
+    	if(StereotypeAPI.hasAppliedStereotype(basicComponentSet, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
+    		return ( StereotypeAPI.getTaggedValue(basicComponent, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE));
+    	}
+    	return null;
     }
-    
 }
