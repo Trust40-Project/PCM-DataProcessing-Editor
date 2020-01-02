@@ -16,9 +16,7 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataPr
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.PerformDataTransmissionOperation;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.util.DataMapping;
 import org.palladiosimulator.pcm.dataprocessing.profile.api.ProfileConstants;
-import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.seff.AbstractAction;
-import org.palladiosimulator.pcm.seff.ExternalCallAction;
 
 public class SeffServices {
 	public Collection<DataProcessingContainer> getDataProcessingContainer(EObject seff){
@@ -54,20 +52,6 @@ public class SeffServices {
 //	
 //
 	public Collection<DataOperation> getDataOperation(DataProcessingContainer dpContainer){
-//		System.out.println(dpContainer.getEntityName());
-		for (DataOperation dataOperation : dpContainer.getOperations()) {
-//			System.out.println("-operation " + dataOperation.getEntityName());
-			for (Data data : dataOperation.getIncomingData()) {
-//				System.out.println("--incomming " + data.getEntityName());
-			}
-			for (Data data : dataOperation.getOutgoingData()) {
-//				System.out.println("--outgoing " + data.getEntityName());
-			}
-			
-			//TODO bordered dinge für dpc((PerformDataTransmissionOperation)dpContainer).getInputMappings();
-			
-		}
-		
 		return dpContainer.getOperations();
 	}
 //	
@@ -137,9 +121,9 @@ public class SeffServices {
 //
 //
 //
-//	public String getTransmissionFromString(DataMapping dm){
-//		return dm.getFrom().getEntityName();
-//	}
+	public String getTransmissionFromString(DataMapping dm){
+		return dm.getFrom().getEntityName();
+	}
 //
 	public String getTransmissionToString(DataMapping dm){
 		return dm.getTo().getEntityName();
