@@ -283,7 +283,7 @@
         </containerMappings>
       </layers>
     </ownedRepresentationExtensions>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.Services"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.RepositoryServices"/>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.SeffServices"/>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.ResourceEnvironmentService"/>
   </ownedViewpoints>

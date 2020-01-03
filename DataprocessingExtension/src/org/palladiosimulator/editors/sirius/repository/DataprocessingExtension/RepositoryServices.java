@@ -25,7 +25,7 @@ import org.palladiosimulator.pcm.repository.Repository;
  * The services class used by VSM.
  * @param <E>
  */
-public class Services<E> {
+public class RepositoryServices<E> {
     public Collection<OperationInterface> getSetCorrespondingInterfaces(Repository repo){
     	Collection<Interface> interfaceSet = repo.getInterfaces__Repository();
     	Collection<OperationInterface> operationInterfaceSet = new ArrayList<>();
@@ -109,15 +109,5 @@ public class Services<E> {
     
     public String getStoreName(Store store) {
     	return store.getEntityName();
-    }
-    
-
-    public Collection<Characteristic> getCharacteristics(BasicComponent basicComponent) {
-    	Set<BasicComponent> basicComponentSet = new HashSet<>();
-    	basicComponentSet.add(basicComponent);
-    	if(StereotypeAPI.hasAppliedStereotype(basicComponentSet, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
-    		return ( StereotypeAPI.getTaggedValue(basicComponent, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE));
-    	}
-    	return null;
     }
 }

@@ -16,14 +16,14 @@ public class ResourceEnvironmentService {
 	public Collection<Characteristic> getCharacteristic(EObject eObject) {
     	Set<EObject> basicComponentSet = new HashSet<>();
     	basicComponentSet.add(eObject);
-    	System.out.println(eObject.getClass());
+//    	System.out.println(eObject.getClass());
     	if(StereotypeAPI.hasAppliedStereotype(basicComponentSet, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
     		CharacteristicContainer characteristic = (StereotypeAPI.getTaggedValue(eObject, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE));
-    		System.out.println("applied");
-    		System.out.println("--"+characteristic.getOwnedCharacteristics());
+//    		System.out.println("applied");
+//    		System.out.println("--"+characteristic.getOwnedCharacteristics());
     		return characteristic.getOwnedCharacteristics();
     	}
-    	System.out.println("applied");
+//    	System.out.println("applied");
     	return null;
     }
 	
