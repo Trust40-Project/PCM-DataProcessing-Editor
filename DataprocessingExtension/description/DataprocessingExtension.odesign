@@ -127,7 +127,7 @@
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DataflowExtension" viewpointURI="viewpoint:/org.palladiosimulator.editors.sirius.seff/Seff" representationName="Seff Diagram">
       <layers name="DataflowLayer">
-        <edgeMappings targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataflowExtension']/@layers[name='DataflowLayer']/@containerMappings[name='DataProcessingContainer']" targetFinderExpression="service:connectAActionWithDataProcessingContainer()">
+        <edgeMappings name="MappingDpcAbstractAction" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataflowExtension']/@layers[name='DataflowLayer']/@containerMappings[name='DataProcessingContainer']" targetFinderExpression="service:connectObjectWithDataProcessingContainer()">
           <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.seff/description/seff.odesign#//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']"/>
           <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.seff/description/seff.odesign#//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']"/>
           <style sizeComputationExpression="2">
@@ -283,8 +283,145 @@
         </containerMappings>
       </layers>
     </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="UsageModelExtension" viewpointURI="viewpoint:/org.palladiosimulator.editors.sirius.usage/UsageModel" representationName="UsageModel Diagram">
+      <layers name="CharacteristicsLayer">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="usageScenario" semanticCandidatesExpression="aql: self.usageScenario_UsageModel" domainClass="usagemodel.UsageScenario">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="scenarioBehavior" semanticCandidatesExpression="aql: self.scenarioBehaviour_UsageScenario">
+            <borderedNodeMappings name="Characteristic" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
+              <style xsi:type="style:SquareDescription" labelExpression="service:characteristicToString()" labelPosition="node" resizeKind="NSEW" width="8" height="4">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <reusedNodeMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start']"/>
+            <reusedNodeMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']"/>
+            <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']"/>
+            <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']"/>
+            <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']"/>
+            <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']"/>
+            <importedMapping href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']"/>
+          </subContainerMappings>
+          <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']"/>
+          <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']"/>
+          <importedMapping href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']"/>
+        </containerMappings>
+      </layers>
+      <layers name="DataFlowLayer">
+        <edgeMappings name="ConnectionDataMapping" sourceMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']/@borderedNodeMappings[name='DataMappingInputFrom'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@borderedNodeMappings[name='DataTransmission']/@borderedNodeMappings[name='TargetDataMappingOutputFrom']" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']/@borderedNodeMappings[name='DataMappingOutputTo'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@borderedNodeMappings[name='DataTransmission']/@borderedNodeMappings[name='TargetDataMappingInputTo']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DataFlow" sourceMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']/@borderedNodeMappings[name='OutgoingDataOfOperation']" targetFinderExpression="feature:incomingData">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ConnectionScenBehayDPC" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']" targetFinderExpression="service:connectObjectWithDataProcessingContainer()">
+          <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']"/>
+          <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']"/>
+          <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']"/>
+          <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']"/>
+          <sourceMapping xsi:type="description_1:NodeMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start']"/>
+          <sourceMapping xsi:type="description_1:NodeMapping" href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']"/>
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="DataProcessingContainer" semanticCandidatesExpression="service:getDPCForUsageModel()" domainClass="processing::DataProcessingContainer">
+          <borderedNodeMappings name="DataTransmission" semanticCandidatesExpression="service:getPerformDataTransmissionOperationFromContainer()" domainClass="processing::PerformDataTransmissionOperation">
+            <borderedNodeMappings name="TargetDataMappingInputTo" semanticCandidatesExpression="service:getInputDataMapping()" domainClass="util::DataMapping">
+              <style xsi:type="style:SquareDescription" labelSize="6" showIcon="false" labelExpression="service:getTransmissionToString()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="TargetDataMappingOutputFrom" semanticCandidatesExpression="service:getOutputDataMapping()" domainClass="util::DataMapping">
+              <style xsi:type="style:SquareDescription" labelSize="6" labelExpression="service:getTransmissionFromString()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelSize="1" showIcon="false" labelExpression="." labelPosition="node" resizeKind="NSEW" width="1" height="6">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="DataOperation" semanticCandidatesExpression="service:getDataOperation()" domainClass="processing::DataOperation">
+            <borderedNodeMappings name="OutgoingDataOfOperation" semanticCandidatesExpression="feature:outgoingData" domainClass="data::Data">
+              <style xsi:type="style:SquareDescription" labelSize="6" labelExpression="feature:entityName" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW" width="6" height="6">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>EAST</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="DataMappingInputFrom" semanticCandidatesExpression="service:getInputDataMapping()" domainClass="util::DataMapping">
+              <style xsi:type="style:SquareDescription" labelSize="6" labelExpression="service:getTransmissionFromString()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="DataMappingOutputTo" semanticCandidatesExpression="service:getOutputDataMapping()" domainClass="util::DataMapping">
+              <style xsi:type="style:SquareDescription" labelSize="6" showIcon="false" labelExpression="service:getTransmissionToString()" resizeKind="NSEW" width="2" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW" width="10" height="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:entityName">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.RepositoryServices"/>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.SeffServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.ResourceEnvironmentService"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.ResourceEnvironmentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.UsageServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.Services"/>
   </ownedViewpoints>
 </description:Group>

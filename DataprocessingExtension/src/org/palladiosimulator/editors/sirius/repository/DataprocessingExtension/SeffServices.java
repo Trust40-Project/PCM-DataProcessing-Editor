@@ -55,7 +55,7 @@ public class SeffServices {
 		return dpContainer.getOperations();
 	}
 //	
-	public EObject connectAActionWithDataProcessingContainer(AbstractAction aaction) {
+	public EObject connectObjectWithDataProcessingContainer(EObject aaction) {
 		Set<EObject> abstractActions = new HashSet<>();
 		abstractActions.add((EObject) aaction);
 		EObject dpc = null;
