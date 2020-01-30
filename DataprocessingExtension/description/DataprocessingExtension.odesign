@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="DataprocessingExtension" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="DataprocessingExtension" version="12.0.0.2017041100">
   <ownedViewpoints name="DataProcessingExtension">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DataProcessingExtension" viewpointURI="viewpoint:/org.palladiosimulator.editors.sirius.repository/Repository" representationName="Repository Diagram">
       <layers name="DataProcessingExtension">
-        <edgeMappings name="ConnectionOperationInterfaceToSignatureList" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='DataProcessingExtension']/@containerMappings[name='SignatureListInterface']" targetFinderExpression="var:self">
-          <sourceMapping xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']"/>
-          <style>
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelSize="12">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="SignatureListInterface" semanticCandidatesExpression="service:getSetCorrespondingInterfaces()" domainClass="repository::OperationInterface" childrenPresentation="VerticalStack">
-          <subContainerMappings name="OperationSignature" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository::OperationSignature" childrenPresentation="List">
-            <subNodeMappings name="ParameterBasedData" semanticCandidatesExpression="service:getParameterBasedData()" domainClass="ParameterBasedData">
-              <style xsi:type="style:SquareDescription" labelExpression="service:nameOfParameterBasedData()" labelPosition="node" resizeKind="NSEW">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Interface" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository::OperationInterface" childrenPresentation="VerticalStack">
+          <subContainerMappings name="OperationSignature" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository::OperationSignature" childrenPresentation="VerticalStack">
+            <subContainerMappings name="SignatureRefinement" semanticCandidatesExpression="service:getRefinement()" domainClass="repository::OperationSignatureDataRefinement" childrenPresentation="List">
+              <subNodeMappings name="ParameterBasedData" semanticCandidatesExpression="service:getParameterBasedDataOfRef()" domainClass="ParameterBasedData">
+                <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:nameOfParameterBasedData()" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="ReturnBasedData" semanticCandidatesExpression="service:getReturnBasedDataOfRef()" domainClass="ResultBasedData">
+                <style xsi:type="style:SquareDescription" labelSize="7" showIcon="false" labelExpression="service:nameOfResultBasedData()" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="7" labelExpression="feature:id">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
-            </subNodeMappings>
-            <subNodeMappings name="ReturnBasedData" semanticCandidatesExpression="service:getReturnBasedData()" domainClass="ResultBasedData">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:nameOfResultBasedData()" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
+            </subContainerMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.entityName + '(' + self.printParameters() + ')'" widthComputationExpression="" heightComputationExpression="">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -35,12 +34,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;Interface>>\n'.concat(self.entityName)" widthComputationExpression="" heightComputationExpression="">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
+          <importedMapping href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']"/>
         </containerMappings>
         <reusedMappings xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']"/>
         <reusedMappings xsi:type="description_1:ContainerMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem']"/>
@@ -75,8 +69,32 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@edgeMappings[name='Contains']"/>
         <reusedMappings xsi:type="description_1:EdgeMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provides%20Type']"/>
         <reusedMappings xsi:type="description_1:EdgeMapping" href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Complete%20Type']"/>
+        <toolSections name="Refinements Elements">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ParameterBasedData" nodeMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='DataProcessingExtension']/@containerMappings[name='Interface']/@subContainerMappings[name='OperationSignature']/@subContainerMappings[name='SignatureRefinement']/@subNodeMappings[name='ParameterBasedData']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ParameterBasedData" referenceName="parameterRefinements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'ParameterData' + container.parameterRefinements -> size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ReturnBasedData" nodeMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='DataProcessingExtension']/@containerMappings[name='Interface']/@subContainerMappings[name='OperationSignature']/@subContainerMappings[name='SignatureRefinement']/@subNodeMappings[name='ReturnBasedData']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ResultBasedData" referenceName="resultRefinements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'Returndata' + container.resultRefinements->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </layers>
-      <layers name="StoreForBasicComponent">
+      <layers name="BasicComponentExtension">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="BasicComponentImport" semanticCandidatesExpression="feature:components__Repository" domainClass="repository::BasicComponent" childrenPresentation="VerticalStack" hideSubMappings="true" inheritsAncestorFilters="false">
           <subContainerMappings name="StoreName" semanticCandidatesExpression="var:self" domainClass="repository::BasicComponent" childrenPresentation="List">
             <subNodeMappings name="Store" semanticCandidatesExpression="service:getStores()" domainClass="repository::Store">
@@ -93,22 +111,14 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="Characteristic" semanticCandidatesExpression="var:self" domainClass="repository::BasicComponent">
-            <subContainerMappings name="CharacteristicContainer" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
-              <subNodeMappings name="CharacteristicType" semanticCandidatesExpression="service:getCharacteristicType()" domainClass="characteristics::CharacteristicType">
-                <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:characteristicTypeToString()" labelPosition="node" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-                </style>
-              </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:getCharacteristicID()">
+          <subContainerMappings name="Characteristic" semanticCandidatesExpression="var:self" domainClass="repository::BasicComponent" childrenPresentation="List">
+            <subNodeMappings name="CharacteristicContainer" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:characteristicToString()" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
-            </subContainerMappings>
+            </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Characteristics">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -234,14 +244,14 @@
       <layers name="CharacteristicsLayer">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="ResourceContainer" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment::ResourceContainer" hideSubMappings="true" inheritsAncestorFilters="false">
           <subContainerMappings name="CharacteristicContainer" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
-            <subNodeMappings name="CharacteristicType" semanticCandidatesExpression="service:getCharacteristicType()" domainClass="characteristics::CharacteristicType">
-              <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:characteristicTypeToString()" labelPosition="node" resizeKind="NSEW">
+            <subNodeMappings name="Literals" semanticCandidatesExpression="service:getLiterals()" domainClass="EnumCharacteristicLiteral">
+              <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:getLiteralName()" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:getCharacteristicID()">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:characteristicToString()">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -288,6 +298,16 @@
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="usageScenario" semanticCandidatesExpression="aql: self.usageScenario_UsageModel" domainClass="usagemodel.UsageScenario">
           <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="scenarioBehavior" semanticCandidatesExpression="aql: self.scenarioBehaviour_UsageScenario">
             <borderedNodeMappings name="Characteristic" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
+              <borderedNodeMappings name="Literals" semanticCandidatesExpression="service:getLiterals()" domainClass="EnumCharacteristicLiteral">
+                <style xsi:type="style:SquareDescription" labelExpression="service:getLiteralName()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <forbiddenSides>WEST</forbiddenSides>
+                  <forbiddenSides>SOUTH</forbiddenSides>
+                  <forbiddenSides>NORTH</forbiddenSides>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </borderedNodeMappings>
               <style xsi:type="style:SquareDescription" labelExpression="service:characteristicToString()" labelPosition="node" resizeKind="NSEW" width="8" height="4">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

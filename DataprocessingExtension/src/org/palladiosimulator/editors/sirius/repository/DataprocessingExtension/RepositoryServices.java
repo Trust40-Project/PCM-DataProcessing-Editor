@@ -3,11 +3,16 @@ package org.palladiosimulator.editors.sirius.repository.DataprocessingExtension;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicContainer;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristic;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ResultBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.OperationSignatureDataRefinement;
@@ -75,9 +80,7 @@ public class RepositoryServices<E> {
     	signatureSet.add(signature);
     	if(StereotypeAPI.hasAppliedStereotype(signatureSet, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
     	    	OperationSignatureDataRefinement refinements = StereotypeAPI.getTaggedValue(signature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
-    	    	
     	    
-    	    	
     	    	return refinements.getResultRefinements();
     	}
     	return null;
@@ -109,5 +112,23 @@ public class RepositoryServices<E> {
     
     public String getStoreName(Store store) {
     	return store.getEntityName();
+    }    
+    
+    
+    public OperationSignatureDataRefinement getRefinement(OperationSignature signature ) {
+		if(StereotypeAPI.isStereotypeApplied(signature, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
+			return StereotypeAPI.getTaggedValue(signature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
+		}
+    	return null;
     }
+    
+    public Collection<ParameterBasedData> getParameterBasedDataOfRef(OperationSignatureDataRefinement signature) {
+    	return signature.getParameterRefinements();
+    }
+
+    
+    public Collection<ResultBasedData> getReturnBasedDataOfRef(OperationSignatureDataRefinement signature) {
+    	return signature.getResultRefinements();
+    }
+    
 }

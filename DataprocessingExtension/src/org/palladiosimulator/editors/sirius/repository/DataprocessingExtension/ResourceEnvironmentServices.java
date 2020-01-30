@@ -32,7 +32,7 @@ public class ResourceEnvironmentServices {
 	}
 
 	public String characteristicTypeToString(CharacteristicType type) {
-		return type.getClass().getSimpleName();
+		return type.getEntityName() +": "+ type.getId();
 	}
 	
 }

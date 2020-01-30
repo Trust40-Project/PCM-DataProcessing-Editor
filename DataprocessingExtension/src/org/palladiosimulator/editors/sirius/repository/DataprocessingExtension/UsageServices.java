@@ -5,9 +5,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristic;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.Data;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataOperation;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataProcessingContainer;
@@ -18,7 +21,7 @@ import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 public class UsageServices {
 	
 	public String characteristicToString(Characteristic characteristic) {
-		return characteristic.getCharacteristicType().getClass().getSimpleName();
+		return characteristic.getCharacteristicType().getClass().getSimpleName() + ": " + characteristic.getId();
 	}
 	
 	
@@ -36,8 +39,6 @@ public class UsageServices {
 
 		for (EObject eObject : eAllcontent) {
 			elemAction.add(eObject);
-//			System.out.println(eObject.getClass());
-//			System.out.println(StereotypeAPI.hasAppliedStereotype(elemAction, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING));
 			if(StereotypeAPI.hasAppliedStereotype(elemAction, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING)) {
 				dataProcessingContainers.add(StereotypeAPI.getTaggedValue(eObject, ProfileConstants.TAGGED_VALUE_NAME_DATA_PROCESSING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING));
 			}
@@ -49,6 +50,18 @@ public class UsageServices {
 	public Collection<Data> getIncommingData(DataOperation dataOp){
 		return dataOp.getIncomingData();
 	}
+	
+    
+    public EList<EnumCharacteristicLiteral> getLiterals(Characteristic characteristic) {
+    	if(characteristic instanceof EnumCharacteristic) {
+    		return ((EnumCharacteristic)characteristic).getLiterals();
+    	}
+    	return null;
+    }
+    
+    public String getLiteralName(EnumCharacteristicLiteral literal) {
+    	return literal.getEntityName() + ": " + literal.getId();
+    }
 	
 	
 }
