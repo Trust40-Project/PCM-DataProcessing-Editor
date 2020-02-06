@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.Data;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataOperation;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataProcessingContainer;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.PerformDataTransmissionOperation;
@@ -41,7 +40,6 @@ public class SeffServices {
 			elemAction.clear();
 		}
 		
-		Collection<Data> dataToReturn = new ArrayList<>();
 		Collection<DataProcessingContainer> dpContainer = new ArrayList<>();
 		for (EObject eObject : elemsWithData) {
 			dpContainer.add(StereotypeAPI.getTaggedValue(eObject, ProfileConstants.TAGGED_VALUE_NAME_DATA_PROCESSING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING));
@@ -132,7 +130,7 @@ public class SeffServices {
 //	
 	public Collection<DataMapping> getInputDataMapping(DataOperation dataOp){
 		if(dataOp instanceof PerformDataTransmissionOperation) {
-			Collection<DataMapping> dataMappings = new HashSet();
+			Collection<DataMapping> dataMappings = new HashSet<>();
 			for (DataMapping dataMapping : ((PerformDataTransmissionOperation) dataOp).getInputMappings()) {
 				dataMappings.add(dataMapping);
 			}
@@ -143,7 +141,7 @@ public class SeffServices {
 //	
 	public Collection<DataMapping> getOutputDataMapping(DataOperation dataOp){
 		if(dataOp instanceof PerformDataTransmissionOperation) {
-			Collection<DataMapping> dataMappings = new HashSet();
+			Collection<DataMapping> dataMappings = new HashSet<>();
 			for (DataMapping dataMapping : ((PerformDataTransmissionOperation) dataOp).getOutputMappings()) {
 				dataMappings.add(dataMapping);
 			}
