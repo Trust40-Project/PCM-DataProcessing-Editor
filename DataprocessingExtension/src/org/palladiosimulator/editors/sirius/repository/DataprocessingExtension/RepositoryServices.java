@@ -3,16 +3,9 @@ package org.palladiosimulator.editors.sirius.repository.DataprocessingExtension;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicContainer;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristic;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ResultBasedData;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.OperationSignatureDataRefinement;
