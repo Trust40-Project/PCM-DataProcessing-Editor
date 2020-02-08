@@ -76,7 +76,13 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ParameterBasedData" referenceName="parameterRefinements">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'ParameterData' + container.parameterRefinements -> size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'ParameterData' + container.parameterRefinements -> size()">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Var Parameter For Parameter Based Data" id="SetVarParameterForParameterBasedData">
+                      <parameters name="instance" value="var:instance"/>
+                      <parameters name="container" value="var:container"/>
+                      <parameters name="containerView" value="var:containerView"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
