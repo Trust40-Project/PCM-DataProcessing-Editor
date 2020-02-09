@@ -8,5 +8,9 @@
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.SetVarParameterForParameterBasedData"
             id="SetVarParameterForParameterBasedData">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.SetOperationSignatureForResultbasedData"
+            id="SetOperationSignatureForResultbasedData">
+      </javaActions>
    </extension>
 </plugin>

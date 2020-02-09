@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.Shell;
@@ -43,7 +44,7 @@ public class SetVarParameterForParameterBasedData implements IExternalJavaAction
 		ParameterBasedData e1 = (ParameterBasedData) arg1.get("instance");
 
 		//((Repository)((DSemanticDecorator)((DNodeList) arg1.get("vontainerView")).getParentDiagram()).getTarget()).getInterfaces__Repository();
-		OperationSignature opSig = getCorrectInterface(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));	
+		OperationSignature opSig = Services.getCorrectInterface(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));	
 		if(opSig.equals(null)) {
 			return;
 		}		 
@@ -109,21 +110,21 @@ public class SetVarParameterForParameterBasedData implements IExternalJavaAction
 	
 	
 	
-	private OperationSignature getCorrectInterface(EList<Interface> interfaceList, OperationSignatureDataRefinement targetRefinement) {
-		for (Interface interfaceElement : interfaceList) {
-			if(interfaceElement instanceof OperationInterface) {
-				for (OperationSignature operationSignature : ((OperationInterface)interfaceElement).getSignatures__OperationInterface() ) {
-					if(StereotypeAPI.isStereotypeApplied(operationSignature, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
-						OperationSignatureDataRefinement returnedRef= StereotypeAPI.getTaggedValue(operationSignature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
-						if(returnedRef.equals(targetRefinement)) {
-							return operationSignature;
-							
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
+//	public OperationSignature getCorrectInterface(EList<Interface> interfaceList, OperationSignatureDataRefinement targetRefinement) {
+//		for (Interface interfaceElement : interfaceList) {
+//			if(interfaceElement instanceof OperationInterface) {
+//				for (OperationSignature operationSignature : ((OperationInterface)interfaceElement).getSignatures__OperationInterface() ) {
+//					if(StereotypeAPI.isStereotypeApplied(operationSignature, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
+//						OperationSignatureDataRefinement returnedRef= StereotypeAPI.getTaggedValue(operationSignature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
+//						if(returnedRef.equals(targetRefinement)) {
+//							return operationSignature;
+//							
+//						}
+//					}
+//				}
+//			}
+//		}
+//		return null;
+//	}
 
 }
