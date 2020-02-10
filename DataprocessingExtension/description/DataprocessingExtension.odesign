@@ -104,6 +104,16 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="OperationSignatureDataRefinement" containerMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='DataProcessingExtension']/@containerMappings[name='Interface']/@subContainerMappings[name='OperationSignature']/@subContainerMappings[name='SignatureRefinement']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create OperationSignatureDataRefinement" id="CreateOperationSignatureDataRefinement">
+                <parameters name="containerView" value="var:containerView"/>
+                <parameters name="container" value="var:container"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </layers>
       <layers name="BasicComponentExtension">

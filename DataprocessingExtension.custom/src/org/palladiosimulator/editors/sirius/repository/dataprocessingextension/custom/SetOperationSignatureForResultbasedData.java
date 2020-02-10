@@ -29,7 +29,7 @@ public class SetOperationSignatureForResultbasedData implements IExternalJavaAct
 	public void execute(Collection<? extends EObject> arg0, Map<String, Object> arg1) {
 		ResultBasedData rsData = (ResultBasedData) arg1.get("instance");
 //		OperationSignature opSig = getCorrectInterface(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));	
-		OperationSignature opSig = Services.getCorrectInterface(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));
+		OperationSignature opSig = Services.getCorrectOperationSignature(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));
 		rsData.setOperation(opSig);
 	}
 

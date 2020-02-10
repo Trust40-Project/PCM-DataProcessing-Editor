@@ -11,7 +11,7 @@ import org.palladiosimulator.pcm.repository.OperationSignature;
 public class Services {
 	
 	
- public static OperationSignature getCorrectInterface(EList<Interface> interfaceList, OperationSignatureDataRefinement targetRefinement) {
+ public static OperationSignature getCorrectOperationSignature(EList<Interface> interfaceList, OperationSignatureDataRefinement targetRefinement) {
 		for (Interface interfaceElement : interfaceList) {
 			if(interfaceElement instanceof OperationInterface) {
 				for (OperationSignature operationSignature : ((OperationInterface)interfaceElement).getSignatures__OperationInterface() ) {
@@ -21,6 +21,21 @@ public class Services {
 							return operationSignature;
 							
 						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+ 
+	
+	
+public static OperationSignature getCorrectOperationSignature(EList<Interface> interfaceList, OperationSignature targetSignature) {
+		for (Interface interfaceElement : interfaceList) {
+			if(interfaceElement instanceof OperationInterface) {
+				for (OperationSignature operationSignature : ((OperationInterface)interfaceElement).getSignatures__OperationInterface() ) {
+					if(operationSignature.equals(targetSignature)) {
+						return operationSignature;
 					}
 				}
 			}

@@ -44,7 +44,7 @@ public class SetVarParameterForParameterBasedData implements IExternalJavaAction
 		ParameterBasedData e1 = (ParameterBasedData) arg1.get("instance");
 
 		//((Repository)((DSemanticDecorator)((DNodeList) arg1.get("vontainerView")).getParentDiagram()).getTarget()).getInterfaces__Repository();
-		OperationSignature opSig = Services.getCorrectInterface(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));	
+		OperationSignature opSig = Services.getCorrectOperationSignature(((Repository)((DSemanticDecorator)((DNodeList) arg1.get("containerView")).getParentDiagram()).getTarget()).getInterfaces__Repository(), (OperationSignatureDataRefinement) arg1.get("container"));	
 		if(opSig.equals(null)) {
 			return;
 		}		 
@@ -81,6 +81,7 @@ public class SetVarParameterForParameterBasedData implements IExternalJavaAction
 				for (Interface  interf: ((Repository) o).getInterfaces__Repository()) {
 					if(((OperationInterface) interf).getSignatures__OperationInterface().contains(opSig)) {
 						found = true;
+						break;
 					}
 				}
 				if(!found) {
@@ -91,7 +92,6 @@ public class SetVarParameterForParameterBasedData implements IExternalJavaAction
 		
 		for(Object o : dialog.getTreeViewer().getExpandedElements()) {
 			if(o instanceof Interface) {
-				boolean found = false;
 				if(!((OperationInterface) o).getSignatures__OperationInterface().contains(opSig)) {
 					dialog.getTreeViewer().remove(o);
 				}
