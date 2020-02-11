@@ -26,11 +26,12 @@ public class Services {
 							OperationSignatureDataRefinement returnedRef= StereotypeAPI.getTaggedValue(operationSignature, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
 							if(returnedRef.equals(targetRefinement)) {
 								return operationSignature;
-								
 							}
 						}
+						System.out.println();
 					}
 				}
+				System.out.println();
 			}
 			return null;
 		}

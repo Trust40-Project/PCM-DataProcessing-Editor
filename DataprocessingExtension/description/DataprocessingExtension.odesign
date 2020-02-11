@@ -5,7 +5,7 @@
       <layers name="DataProcessingExtension">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="Interface" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository::OperationInterface" childrenPresentation="VerticalStack">
           <subContainerMappings name="OperationSignature" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository::OperationSignature" childrenPresentation="VerticalStack">
-            <subContainerMappings name="SignatureRefinement" semanticCandidatesExpression="service:getRefinement()" domainClass="repository::OperationSignatureDataRefinement" childrenPresentation="List">
+            <subContainerMappings name="SignatureRefinement" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='DataProcessingExtension']/@toolSections.0/@ownedTools[name='DeletOperationSignatureDataRefinement']" semanticCandidatesExpression="service:getRefinement()" domainClass="repository::OperationSignatureDataRefinement" childrenPresentation="List">
               <subNodeMappings name="ParameterBasedData" semanticCandidatesExpression="service:getParameterBasedDataOfRef()" domainClass="ParameterBasedData">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:nameOfParameterBasedData()" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -111,6 +111,17 @@
               <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create OperationSignatureDataRefinement" id="CreateOperationSignatureDataRefinement">
                 <parameters name="containerView" value="var:containerView"/>
                 <parameters name="container" value="var:container"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeletOperationSignatureDataRefinement">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove OperationSignatureDataRefinement" id="RemoveOperationSignatureDataRefinement">
+                <parameters name="element" value="var:element"/>
+                <parameters name="containerView" value="var:containerView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
