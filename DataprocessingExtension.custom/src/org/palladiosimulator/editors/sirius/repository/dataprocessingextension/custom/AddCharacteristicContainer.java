@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.ocl.pivot.Stereotype;
@@ -68,28 +69,31 @@ public class AddCharacteristicContainer implements IExternalJavaAction {
 	}
 	
 	public void addCharacteristic(DataSpecification dataSpec, CharacteristicContainer characContainer) {
-		characContainer.getOwnedCharacteristics().add(getCharacteristic(dataSpec));
+		Characteristic newCharac = CharacteristicsFactoryImpl.init().createEnumCharacteristic();
+		newCharac.setCharacteristicType(getCharacteristic(dataSpec));
+		characContainer.getOwnedCharacteristics().add(newCharac);
 	}
 	
 	
-	private Characteristic getCharacteristic(DataSpecification dataSpec) {
+	private CharacteristicType getCharacteristic(DataSpecification dataSpec) {
 		Collection<Object> filter = new ArrayList<Object>();
 
-		filter.add(DataSpecification.class);
-		filter.add(CharacteristicContainer.class);
-		filter.add(Characteristic.class);
-		filter.add(Characteristic.class);
+//		filter.add(DataSpecification.class);
+//		filter.add(CharacteristicContainer.class);
+//		filter.add(Characteristic.class);
+		filter.add(CharacteristicType.class);
+		filter.add(CharacteristicTypeContainer.class);
 
 		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
 		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
 				dataSpec.eResource().getResourceSet());
-		dialog.setProvidedService(Characteristic.class);
+		dialog.setProvidedService(CharacteristicType.class);
 		
 //		filterDialogTree(dialog, opSig);
 		
 		dialog.open();
 
-		return (Characteristic) dialog.getResult();
+		return (CharacteristicType) dialog.getResult();
 	}
 	
 
