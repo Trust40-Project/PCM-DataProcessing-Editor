@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface,
  org.palladiosimulator.pcm.dataprocessing;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Import-Package: org.eclipse.sirius.tools.api.ui,
+Import-Package: org.eclipse.emf.ecore,
+ org.eclipse.sirius.tools.api.ui,
  org.palladiosimulator.mdsdprofiles.api,
  org.palladiosimulator.pcm.dataprocessing.profile.api
 Export-Package: org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom

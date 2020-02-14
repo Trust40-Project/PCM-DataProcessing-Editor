@@ -21,7 +21,6 @@ public class SetOperationSignatureForResultbasedData implements IExternalJavaAct
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> arg0) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

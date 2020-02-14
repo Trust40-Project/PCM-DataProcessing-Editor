@@ -1,11 +1,17 @@
 package org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-
+import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.DataSpecification;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.OperationSignatureDataRefinement;
@@ -28,10 +34,8 @@ public class Services {
 								return operationSignature;
 							}
 						}
-						System.out.println();
 					}
 				}
-				System.out.println();
 			}
 			return null;
 		}
@@ -52,46 +56,94 @@ public class Services {
 		}
 	
 	
+	public static Repository getRepo(EObject eObject) {
+		try {
+		while( ! (eObject.eContainer() instanceof Repository)) {
+			eObject = eObject.eContainer();
+		}
+		return (Repository) eObject.eContainer();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	
+	
 //	TODO effizienter
 	public static DataSpecification getCorrespondingDataspecification(Repository repo) {
-		Iterator treeIt = repo.eAllContents();
-		Collection<EObject> available = new HashSet<>();
+		Iterator<EObject> treeIt = repo.eAllContents();
+		EObject available = null;
 		
 		
 		while(treeIt.hasNext()) {
 			EObject object = (EObject) treeIt.next();
 			if(StereotypeAPI.isStereotypeApplied(object, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
-				available.add(StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE));
+				available = (StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE));
 			}
-
 			if(StereotypeAPI.isStereotypeApplied(object, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING)) {
-				available.add(StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_DATA_PROCESSING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING));
+				available = (StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_DATA_PROCESSING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING));
 			}
-
 			if(StereotypeAPI.isStereotypeApplied(object, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
-				available.add(StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT));
+				available = (StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT));
 			}
-
 			if(StereotypeAPI.isStereotypeApplied(object, ProfileConstants.STEREOTYPE_NAME_STORE_CHARACTERIZATION)) {
-				available.add(StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_STORE_CHARACTERIZATION, ProfileConstants.STEREOTYPE_NAME_STORE_CHARACTERIZATION));
+				available = (StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_STORE_CHARACTERIZATION, ProfileConstants.STEREOTYPE_NAME_STORE_CHARACTERIZATION));
 			}
-
 			if(StereotypeAPI.isStereotypeApplied(object, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING)) {
-				available.add(StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_STORE_HAVING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING));
-			}			
-		}
-		
-		for (EObject availabEObject : available) {
-			try{
-				DataSpecification dataSpec = (DataSpecification) availabEObject.eContainer();
-				return dataSpec;
-			} catch(Exception e) {
-				
+				available = (StereotypeAPI.getTaggedValue(object, ProfileConstants.TAGGED_VALUE_NAME_STORE_HAVING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING));
 			}
-		}
-		return null;
+				if(available != null) {
+					return getParentOfType(available, DataSpecification.class);
+				}else {
+				}
+		} 
+		return (DataSpecification) loadResourceFromXMI(repo);
 	}
+	
+	
+	
+	private static EObject loadResourceFromXMI(EObject self) {
+		Shell shell = Display.getCurrent().getActiveShell();
+		
+		shell = getShell();
+		shell.open();
+		ResourceDialog dia = new ResourceDialog(shell, "open a resource", SWT.OPEN);
+		dia.open();
+		String uri = dia.getURIText();
+		
+		System.out.println ("Selected: "+uri);
+        ResourceSet resSet = self.eResource().getResourceSet();
+        Resource resource = resSet.getResource(URI.createURI(uri), true);
+		EObject obj = resource.getContents().get(0);
+		
+		System.out.println("loaded resource: "+obj.toString());
+		return obj;
+	}
+	
+	
+	private static Shell getShell() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		  if (window == null) {
+		    IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+		    if (windows.length > 0) {
+		       return windows[0].getShell();
+		    }
+		  }
+		  else {
+		    return window.getShell();
+		  }
+		  return null;
+		}
 
+	
+    public static <T> T getParentOfType(EObject object, Class<T> parentClass) {
+        EObject parent = object;
+        while (parent != null && !parentClass.isInstance(parent)) {
+               parent = parent.eContainer();
+        }
+        return (T) parent;
+
+  }
 
 }
 

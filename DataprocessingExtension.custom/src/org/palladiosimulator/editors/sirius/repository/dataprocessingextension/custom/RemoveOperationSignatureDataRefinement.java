@@ -23,18 +23,7 @@ public class RemoveOperationSignatureDataRefinement implements IExternalJavaActi
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> arg0) {
-//		arg0.forEach(s -> System.out.println(s.getClass().getSimpleName() +"--"+ ((OperationSignatureDataRefinement) s).getEntityName()));
-//		System.out.println(arg0.size());
-		boolean can = true;
-		
-		for (EObject eObject : arg0) {
-			if(((OperationSignatureDataRefinement)eObject).getParameterRefinements().size() > 0 || 
-					((OperationSignatureDataRefinement)eObject).getResultRefinements().size() > 0){
-					can = false;
-			}
-		}
-//		System.out.println(can);
-		return can;
+		return true;
 	}
 
 	@Override
@@ -45,19 +34,18 @@ public class RemoveOperationSignatureDataRefinement implements IExternalJavaActi
 		DNodeContainer nodeSpec = (DNodeContainer) arg1.get("containerView");
 		DSemanticDecorator decorator = (DSemanticDecorator) nodeSpec.getParentDiagram();
 		Repository repo = (Repository) decorator.getTarget();
-		repo.getInterfaces__Repository().forEach(s -> System.out.println(s.getEntityName()));
 		OperationSignature opSig = Services.getCorrectOperationSignature(repo.getInterfaces__Repository(), opSigDataRef);
 		if(opSig == null) {
-			System.out.println("mayday");
+
 		}else {
 		
-		DataSpecification dataSpec = (DataSpecification)opSigDataRef.eContainer();
+		DataSpecification dataSpec = Services.getParentOfType(opSigDataRef, DataSpecification.class);
 
 		if(StereotypeAPI.isStereotypeApplied(opSig, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT)) {
 			StereotypeAPI.unapplyStereotype(opSig, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);
 		}
 		
-		System.out.println(dataSpec.getOperationSignatureDataRefinement().remove(opSigDataRef));
+		dataSpec.getOperationSignatureDataRefinement().remove(opSigDataRef);
 		}
 	}
 

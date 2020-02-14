@@ -20,5 +20,21 @@
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveOperationSignatureDataRefinement"
             id="RemoveOperationSignatureDataRefinement">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddCharacteristicContainer"
+            id="AddCharacteristicContainer">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristic"
+            id="RemoveCharacteristic">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddStore"
+            id="AddStore">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.DeleteStore"
+            id="RemoveStore">
+      </javaActions>
    </extension>
 </plugin>
