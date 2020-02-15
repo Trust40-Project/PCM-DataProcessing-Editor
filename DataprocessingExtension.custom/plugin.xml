@@ -21,12 +21,12 @@
             id="RemoveOperationSignatureDataRefinement">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddCharacteristicContainer"
-            id="AddCharacteristicContainer">
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddCharacteristicToRepository"
+            id="AddCharacteristicToRepository">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristic"
-            id="RemoveCharacteristic">
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristicFromRepository"
+            id="RemoveCharacteristicFromRepository">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddStore"
@@ -35,6 +35,18 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.DeleteStore"
             id="RemoveStore">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddCharacteristicToResourceEnvironment"
+            id="AddCharacteristicToResourceEnvironment">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddCharacteristic"
+            id="AddCharacteristic">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristicFromResourceEnvironment"
+            id="RemoveCharacteristicFromResourceEnvironment">
       </javaActions>
    </extension>
 </plugin>

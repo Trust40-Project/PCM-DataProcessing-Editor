@@ -48,7 +48,7 @@ public class AddStore implements IExternalJavaAction {
 		if(StereotypeAPI.isStereotypeApplied(basicComponent, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING)) {
 			 storeContainer = StereotypeAPI.getTaggedValue(basicComponent, ProfileConstants.TAGGED_VALUE_NAME_STORE_HAVING_CONTAINER, ProfileConstants.STEREOTYPE_NAME_STORE_HAVING);
 		}else {
-			DataSpecification dataSpec = Services.getCorrespondingDataspecification(repo);
+			DataSpecification dataSpec = Services.getCorrespondingDataspecification(repo.eAllContents(), repo);
 			storeContainer =  RepositoryFactoryImpl.init().createStoreContainer();
 			storeContainer.setEntityName(basicComponent.getEntityName());
 			dataSpec.getStoreContainers().add(storeContainer);

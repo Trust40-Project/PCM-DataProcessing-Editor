@@ -45,7 +45,7 @@ public class CreateOperationSignatureDataRefinement implements IExternalJavaActi
 		OperationSignatureDataRefinement opSigDataRef = RepositoryFactoryImpl.init().createOperationSignatureDataRefinement();
 		opSigDataRef.setEntityName(opSig.getInterface__OperationSignature().getEntityName()+"_"+opSig.getEntityName());
 			
-		DataSpecification dataSpec = Services.getCorrespondingDataspecification(repo);
+		DataSpecification dataSpec = Services.getCorrespondingDataspecification(repo.eAllContents(), repo);
 		dataSpec.getOperationSignatureDataRefinement().add(opSigDataRef);
 			
 		StereotypeAPI.applyStereotype(opSig, ProfileConstants.STEREOTYPE_NAME_OPERATION_SIGNATURE_DATA_REFINEMENT);

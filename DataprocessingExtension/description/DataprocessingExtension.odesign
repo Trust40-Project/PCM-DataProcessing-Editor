@@ -171,7 +171,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CharacteristicContainer" id="AddCharacteristicContainer">
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add Characteristic To Repository" id="AddCharacteristicToRepository">
                 <parameters name="container" value="var:container"/>
               </firstModelOperations>
             </initialOperation>
@@ -181,7 +181,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove Characteristic" id="RemoveCharacteristic">
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove Characteristic" id="RemoveCharacteristicFromRepository">
                 <parameters name="element" value="var:element"/>
                 <parameters name="elemenetView" value="var:elementView"/>
                 <parameters name="containerView" value="var:containerView"/>
@@ -321,7 +321,7 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ResourceEnvironmentExtension" viewpointURI="viewpoint:/org.palladiosimulator.editors.sirius.resourceenvironment/ResourceEnvironment" representationName="ResourceEnvironment Diagram">
       <layers name="CharacteristicsLayer">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="ResourceContainer" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment::ResourceContainer" hideSubMappings="true" inheritsAncestorFilters="false">
-          <subContainerMappings name="CharacteristicContainer" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
+          <subContainerMappings name="CharacteristicContainer" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@toolSections.0/@ownedTools[name='Delete%20Characteristic%20From%20ResourceEnvironment']" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
             <subNodeMappings name="Literals" semanticCandidatesExpression="service:getLiterals()" domainClass="EnumCharacteristicLiteral">
               <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:getLiteralName()" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -343,8 +343,8 @@
           <importedMapping href="../../org.palladiosimulator.editors.sirius.resourceenvironment/description/resourceenvironment.odesign#//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
         </containerMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="LinkingResource" semanticCandidatesExpression="feature:linkingResources__ResourceEnvironment" childrenPresentation="VerticalStack" hideSubMappings="true">
-          <subContainerMappings name="Characteristic" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.LinkingResource">
-            <subContainerMappings name="CharacteristicContainer" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
+          <subContainerMappings name="Characteristic" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.LinkingResource" childrenPresentation="VerticalStack">
+            <subContainerMappings name="CharacteristicContainer" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@toolSections.0/@ownedTools[name='Delete%20Characteristic%20From%20ResourceEnvironment']" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic" childrenPresentation="List">
               <subNodeMappings name="CharacteristicType" semanticCandidatesExpression="service:getCharacteristicType()" domainClass="characteristics::CharacteristicType">
                 <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="service:characteristicTypeToString()" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -369,6 +369,29 @@
           <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.resourceenvironment/description/resourceenvironment.odesign#//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subContainerMappings[name='CommunicationLinkResourceSpecification']"/>
           <importedMapping href="../../org.palladiosimulator.editors.sirius.resourceenvironment/description/resourceenvironment.odesign#//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']"/>
         </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AddCharacteristic" containerMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='LinkingResource']/@subContainerMappings[name='Characteristic']/@subContainerMappings[name='CharacteristicContainer'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='CharacteristicContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add Characteristic To ResourceEnvironment" id="AddCharacteristicToResourceEnvironment">
+                <parameters name="container" value="var:container"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Characteristic From ResourceEnvironment">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove Characteristic From ResourceEnvironment" id="RemoveCharacteristicFromResourceEnvironment">
+                <parameters name="element" value="var:element"/>
+                <parameters name="elementView" value="var:elementView"/>
+                <parameters name="containerView" value="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </layers>
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="UsageModelExtension" viewpointURI="viewpoint:/org.palladiosimulator.editors.sirius.usage/UsageModel" representationName="UsageModel Diagram">
