@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.DataSpecification;
@@ -35,13 +36,13 @@ public class AddCharacteristicToUsageModel implements IExternalJavaAction {
 		if(StereotypeAPI.isStereotypeApplicable(container, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
 			CharacteristicContainer characContainer = CharacteristicsFactoryImpl.init().createCharacteristicContainer();
 			dataSpec.getCharacteristicContainer().add(characContainer);
-			UsageModel usageModel = Services.getParentOfType(container, UsageModel.class);
+			UsageModel usageModel = Services.getParentOfType(container, UsageModel.class); 
 			for (UsageScenario usageScenario : usageModel.getUsageScenario_UsageModel()) {
 				StereotypeAPI.applyStereotype(usageScenario.getScenarioBehaviour_UsageScenario(), ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE);
 				StereotypeAPI.setTaggedValue(usageScenario.getScenarioBehaviour_UsageScenario(), characContainer, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER);
 			}
 		}	
-		Services.addCharacteristicToElement(dataSpec, container);
+		CharacteristicServices.addCharacteristicToElement(dataSpec, container);
 		
 	}
 }

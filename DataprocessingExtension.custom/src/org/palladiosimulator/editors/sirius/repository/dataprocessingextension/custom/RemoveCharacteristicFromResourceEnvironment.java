@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
@@ -25,10 +26,10 @@ public class RemoveCharacteristicFromResourceEnvironment implements IExternalJav
 		ResourceEnvironment resInvironment = (ResourceEnvironment) semanticDiagram.getTarget();
 		
 		for (EObject eObject : resInvironment.getLinkingResources__ResourceEnvironment()) {
-			Services.removeCharacteristic(eObject, characteristic);
+			CharacteristicServices.removeCharacteristic(eObject, characteristic);
 		}
 		for (EObject eObject : resInvironment.getResourceContainer_ResourceEnvironment()) {
-			Services.removeCharacteristic(eObject, characteristic);			
+			CharacteristicServices.removeCharacteristic(eObject, characteristic);			
 		}
 	}
 

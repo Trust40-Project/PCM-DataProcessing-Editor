@@ -145,7 +145,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="Characteristic" semanticCandidatesExpression="var:self" domainClass="repository::BasicComponent" childrenPresentation="List">
-            <subNodeMappings name="CharacteristicContainer" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='BasicComponentExtension']/@toolSections.0/@ownedTools[name='Delete%20Characterisitic']" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
+            <subNodeMappings name="CharacteristicContainer" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='BasicComponentExtension']/@toolSections.0/@ownedTools[name='Delete%20Characterisitic%20From%20Repository']" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="service:characteristicToString()" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -167,7 +167,7 @@
           <importedMapping href="../../org.palladiosimulator.editors.sirius.repository/description/repository.odesign#//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']"/>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Characteristic" nodeMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='BasicComponentExtension']/@containerMappings[name='BasicComponentImport']/@subContainerMappings[name='Characteristic']/@subNodeMappings[name='CharacteristicContainer']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Characteristic To Repository" nodeMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='DataProcessingExtension']/@layers[name='BasicComponentExtension']/@containerMappings[name='BasicComponentImport']/@subContainerMappings[name='Characteristic']/@subNodeMappings[name='CharacteristicContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -176,7 +176,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Characterisitic">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Characterisitic From Repository">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -370,7 +370,7 @@
           <importedMapping href="../../org.palladiosimulator.editors.sirius.resourceenvironment/description/resourceenvironment.odesign#//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']"/>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AddCharacteristic" containerMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='LinkingResource']/@subContainerMappings[name='Characteristic']/@subContainerMappings[name='CharacteristicContainer'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='CharacteristicContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Characteristic to  ResourceEnvironment" containerMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='LinkingResource']/@subContainerMappings[name='Characteristic']/@subContainerMappings[name='CharacteristicContainer'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='ResourceEnvironmentExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='CharacteristicContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -398,7 +398,7 @@
       <layers name="CharacteristicsLayer">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="usageScenario" semanticCandidatesExpression="aql: self.usageScenario_UsageModel" domainClass="usagemodel.UsageScenario">
           <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="scenarioBehavior" semanticCandidatesExpression="aql: self.scenarioBehaviour_UsageScenario">
-            <borderedNodeMappings name="Characteristic" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
+            <borderedNodeMappings name="Characteristic" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='CharacteristicsLayer']/@toolSections.0/@ownedTools[name='Delete%20Characteristc']" semanticCandidatesExpression="service:getCharacteristic()" domainClass="characteristics::Characteristic">
               <borderedNodeMappings name="Literals" semanticCandidatesExpression="service:getLiterals()" domainClass="EnumCharacteristicLiteral">
                 <style xsi:type="style:SquareDescription" labelExpression="service:getLiteralName()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -430,6 +430,28 @@
           <reusedContainerMappings href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']"/>
           <importedMapping href="../../org.palladiosimulator.editors.sirius.usage/description/usage.odesign#//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']"/>
         </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Characteristic to UsageModel" nodeMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='CharacteristicsLayer']/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@borderedNodeMappings[name='Characteristic']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add Characteristic To UsageModel" id="AddCharacteristicToUsageModel">
+                <parameters name="container" value="var:container"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Characteristc">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove Characteristic From UsageModel" id="RemoveCharacteristicFromUsageModel">
+                <parameters name="containerView" value="var:containerView"/>
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </layers>
       <layers name="DataFlowLayer">
         <edgeMappings name="ConnectionDataMapping" sourceMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']/@borderedNodeMappings[name='DataMappingInputFrom'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@borderedNodeMappings[name='DataTransmission']/@borderedNodeMappings[name='TargetDataMappingOutputFrom']" targetMapping="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@subNodeMappings[name='DataOperation']/@borderedNodeMappings[name='DataMappingOutputTo'] //@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']/@borderedNodeMappings[name='DataTransmission']/@borderedNodeMappings[name='TargetDataMappingInputTo']" targetFinderExpression="var:self">
@@ -462,7 +484,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="DataProcessingContainer" semanticCandidatesExpression="service:getDPCForUsageModel()" domainClass="processing::DataProcessingContainer">
+        <containerMappings name="DataProcessingContainer" deletionDescription="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@toolSections.0/@ownedTools[name='Remove%20DataProcessingContainer']" semanticCandidatesExpression="service:getDPCForUsageModel()" domainClass="processing::DataProcessingContainer">
           <borderedNodeMappings name="DataTransmission" semanticCandidatesExpression="service:getPerformDataTransmissionOperationFromContainer()" domainClass="processing::PerformDataTransmissionOperation">
             <borderedNodeMappings name="TargetDataMappingInputTo" semanticCandidatesExpression="service:getInputDataMapping()" domainClass="util::DataMapping">
               <style xsi:type="style:SquareDescription" labelSize="6" showIcon="false" labelExpression="service:getTransmissionToString()" labelAlignment="RIGHT" resizeKind="NSEW" width="2" height="1">
@@ -537,6 +559,28 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AddDataProcessingContainer" containerMappings="//@ownedViewpoints[name='DataProcessingExtension']/@ownedRepresentationExtensions[name='UsageModelExtension']/@layers[name='DataFlowLayer']/@containerMappings[name='DataProcessingContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddData ProcessingContainer To UsageModel" id="AddDataProcessingContainerToUsageModel">
+                <parameters name="container" value="var:container"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Remove DataProcessingContainer">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Remove DataprocessingContainer From UsageModel" id="RemoveDataprocessingContainerFromUsageModel">
+                <parameters name="element" value="var:element"/>
+                <parameters name="containerView" value="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </layers>
     </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension.RepositoryServices"/>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -25,7 +26,7 @@ public class RemoveCharacteristicFromRepository implements IExternalJavaAction {
 		Repository repo = (Repository) semanticDiagram.getTarget();
 		
 		for (EObject repoComponent : repo.getComponents__Repository()) {
-			Services.removeCharacteristic(repoComponent, characteristic);
+			CharacteristicServices.removeCharacteristic(repoComponent, characteristic);
 		}
 	}
 

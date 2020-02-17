@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
@@ -17,7 +18,7 @@ public class RemoveCharacteristicFromUsageModel implements IExternalJavaAction {
 	@Override
 	public boolean canExecute(Collection<? extends EObject> arg0) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class RemoveCharacteristicFromUsageModel implements IExternalJavaAction {
 		DSemanticDiagram semanticDiagram = Services.getParentOfType((EObject) arg1.get("containerView"), DSemanticDiagram.class);
 		UsageModel usageModel = (UsageModel) semanticDiagram.getTarget();
 		for (UsageScenario eObject : usageModel.getUsageScenario_UsageModel()) {
-				Services.removeCharacteristic(eObject.getScenarioBehaviour_UsageScenario(), characteristic);
+			CharacteristicServices.removeCharacteristic(eObject.getScenarioBehaviour_UsageScenario(), characteristic);
 		}
 	}
 

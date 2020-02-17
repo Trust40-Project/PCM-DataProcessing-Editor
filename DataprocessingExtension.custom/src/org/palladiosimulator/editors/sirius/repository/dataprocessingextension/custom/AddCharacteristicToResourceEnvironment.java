@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -26,11 +27,10 @@ public class AddCharacteristicToResourceEnvironment implements IExternalJavaActi
 	@Override
 	public void execute(Collection<? extends EObject> arg0, Map<String, Object> arg1) {
 		EObject container = (EObject)arg1.get("container");
-		System.out.println(((Entity)container).getId());
 		ResourceEnvironment resEnv = Services.getParentOfType((EObject)arg1.get("container"), ResourceEnvironment.class);
 		DataSpecification dataSpec = Services.getCorrespondingDataspecification(resEnv.eAllContents(), resEnv);
 		
-		Services.addCharacteristicToElement(dataSpec, container);
+		CharacteristicServices.addCharacteristicToElement(dataSpec, container);
 		
 	}
 

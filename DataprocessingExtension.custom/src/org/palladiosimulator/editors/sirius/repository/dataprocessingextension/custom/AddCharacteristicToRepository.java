@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.DataSpecification;
@@ -34,7 +35,7 @@ public class AddCharacteristicToRepository implements IExternalJavaAction {
 		EObject object = (EObject)arg1.get("container");
 		Repository repo = Services.getRepo(object);				
 		DataSpecification dataSpec = Services.getCorrespondingDataspecification(repo.eAllContents(), repo);
-		Services.addCharacteristicToElement(dataSpec, object);
+		CharacteristicServices.addCharacteristicToElement(dataSpec, object);
 	}
 	
 	

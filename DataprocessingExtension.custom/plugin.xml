@@ -52,5 +52,13 @@
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.DeleteStore"
             id="RemoveStore">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataProcessingContainerToUsageModel"
+            id="AddDataProcessingContainerToUsageModel">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveDataprocessingContainerFromUsageModel"
+            id="RemoveDataprocessingContainerFromUsageModel">
+      </javaActions>
    </extension>
 </plugin>
