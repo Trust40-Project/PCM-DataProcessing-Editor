@@ -29,17 +29,14 @@ public class DataSpecificationServices {
 
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T getCharacteristic(EObject resource, Collection<Object> filterList, Class<T> targetClass) {
+	public static <T> T getCharacteristic(EObject resource, Collection<Object> filterList, Class<T> targetClass, DataSelectionFilter datafilter) {
 		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
 		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filterList, additionalChildReferences,
 				resource.eResource().getResourceSet());
 		dialog.setProvidedService(targetClass);
 		
 		filterduplication(dialog);
-		if(targetClass.equals(AbstractUserAction.class)) {
-			filterUnapplyableAbstractUserActions(dialog);
-			filterOtherUsageModels(dialog, resource);
-		}
+		datafilter.filterDialog(dialog, resource);
 		
 		dialog.open();
 
@@ -66,35 +63,6 @@ public class DataSpecificationServices {
 			}
 		}
 		return false;
-	}
-	
-	private static void filterUnapplyableAbstractUserActions(PalladioSelectEObjectDialog dialog) {
-		for(Object o : dialog.getTreeViewer().getExpandedElements()) {
-			if(o instanceof ScenarioBehaviour) {
-					System.out.println("remove");
-					for (EObject object : ((ScenarioBehaviour) o).getActions_ScenarioBehaviour()) {
-						boolean show = false;
-						if(object instanceof EntryLevelSystemCall || object instanceof Delay) {
-							if(!StereotypeAPI.isStereotypeApplicable((object), ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING)) {
-								dialog.getTreeViewer().remove(object);
-							}else {
-								show = true;
-							}
-						}
-					}
-				
-			}
-		}
-	}
-	
-	private static void filterOtherUsageModels(PalladioSelectEObjectDialog dialog, EObject uModel) {
-		for(Object o : dialog.getTreeViewer().getExpandedElements()) {
-			if(o instanceof UsageModel) {
-				if(!o.equals(uModel)) {
-					dialog.getTreeViewer().remove(o);
-				}
-			}
-		}
 	}
 	
 	

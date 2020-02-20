@@ -60,5 +60,13 @@
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveDataprocessingContainerFromUsageModel"
             id="RemoveDataprocessingContainerFromUsageModel">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveDataprocessingContainerFromSeff"
+            id="RemoveDataprocessingContainerfromSeff">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataProcessingContainerToSeff"
+            id="AddDataProcessingContainerToSeff">
+      </javaActions>
    </extension>
 </plugin>

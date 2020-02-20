@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -156,9 +157,19 @@ public class Services {
                parent = parent.eContainer();
         }
         return (T) parent;
-  }
+    }
     
-	
+   public static <T> void removeUnrelatedElementsFromTreeDiagramm(PalladioSelectEObjectDialog dialog, Class<T> focusClass, T instance) {
+	   for (Object o : dialog.getTreeViewer().getExpandedElements()) {
+			if(focusClass.isInstance(o)) {
+				if(!(o.equals(instance))) {
+					dialog.getTreeViewer().remove(o);
+				}
+			}	
+		}
+   }
+    
+   
     
 
 }
