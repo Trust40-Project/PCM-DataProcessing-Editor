@@ -13,6 +13,7 @@ import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.c
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.DataSpecification;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.DataPackage;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.DataProcessingContainer;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.processing.impl.ProcessingFactoryImpl;
 import org.palladiosimulator.pcm.dataprocessing.profile.api.ProfileConstants;
@@ -62,7 +63,6 @@ public class AddDataProcessingContainerToSeff implements IExternalJavaAction, Da
 		StereotypeAPI.setTaggedValue(aAction, dpContainer, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING, ProfileConstants.TAGGED_VALUE_NAME_DATA_PROCESSING_CONTAINER);
 		
 		dpContainer.setEntityName("Seff_"+aAction.getEntityName());
-		
 		
 	}
 

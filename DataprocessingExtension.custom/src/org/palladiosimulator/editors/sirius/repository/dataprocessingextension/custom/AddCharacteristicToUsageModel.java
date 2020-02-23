@@ -36,11 +36,15 @@ public class AddCharacteristicToUsageModel implements IExternalJavaAction {
 		if(StereotypeAPI.isStereotypeApplicable(container, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE)) {
 			CharacteristicContainer characContainer = CharacteristicsFactoryImpl.init().createCharacteristicContainer();
 			dataSpec.getCharacteristicContainer().add(characContainer);
-			UsageModel usageModel = Services.getParentOfType(container, UsageModel.class); 
-			for (UsageScenario usageScenario : usageModel.getUsageScenario_UsageModel()) {
-				StereotypeAPI.applyStereotype(usageScenario.getScenarioBehaviour_UsageScenario(), ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE);
-				StereotypeAPI.setTaggedValue(usageScenario.getScenarioBehaviour_UsageScenario(), characContainer, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER);
-			}
+//			UsageModel usageModel = Services.getParentOfType(container, UsageModel.class); 
+			StereotypeAPI.applyStereotype(container, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE);
+			StereotypeAPI.setTaggedValue(container, characContainer, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER);
+
+			
+//			for (UsageScenario usageScenario : usageModel.getUsageScenario_UsageModel()) {
+//				StereotypeAPI.applyStereotype(usageScenario.getScenarioBehaviour_UsageScenario(), ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE);
+//				StereotypeAPI.setTaggedValue(usageScenario.getScenarioBehaviour_UsageScenario(), characContainer, ProfileConstants.STEREOTYPE_NAME_CHARACTERIZABLE, ProfileConstants.TAGGED_VALUE_NAME_CHARACTERIZABLE_CONTAINER);
+//			}
 		}	
 		CharacteristicServices.addCharacteristicToElement(dataSpec, container);
 		

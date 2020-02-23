@@ -21,10 +21,6 @@
             id="AddCharacteristicToRepository">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveOperationSignatureDataRefinement"
-            id="RemoveOperationSignatureDataRefinement">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.SetVarParameterForParameterBasedData"
             id="SetVarParameterForParameterBasedData">
       </javaActions>
@@ -33,12 +29,16 @@
             id="SetOperationSignatureForResultbasedData">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.CreateOperationSignatureDataRefinement"
-            id="CreateOperationSignatureDataRefinement">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristicFromResourceEnvironment"
             id="RemoveCharacteristicFromResourceEnvironment">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveOperationSignatureDataRefinement"
+            id="RemoveOperationSignatureDataRefinement">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.CreateOperationSignatureDataRefinement"
+            id="CreateOperationSignatureDataRefinement">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.RemoveCharacteristicFromRepository"
@@ -67,6 +67,10 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataProcessingContainerToSeff"
             id="AddDataProcessingContainerToSeff">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataOperation"
+            id="AddDataOperation">
       </javaActions>
    </extension>
 </plugin>
