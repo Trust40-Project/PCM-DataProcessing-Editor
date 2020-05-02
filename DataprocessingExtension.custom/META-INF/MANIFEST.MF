@@ -32,5 +32,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: org.eclipse.emf.ecore,
  org.eclipse.sirius.tools.api.ui,
  org.palladiosimulator.mdsdprofiles.api,
+ org.palladiosimulator.pcm.dataprocessing.dataprocessing.util,
  org.palladiosimulator.pcm.dataprocessing.profile.api
 Export-Package: org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom

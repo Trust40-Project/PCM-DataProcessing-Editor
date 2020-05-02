@@ -69,8 +69,28 @@
             id="AddDataProcessingContainerToSeff">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataOperation"
-            id="AddDataOperation">
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataToSeff"
+            id="AddDataToSeff">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddOutputMapping"
+            id="AddOutputMapping">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddInputMapping"
+            id="AddInputMapping">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataOperationToUsageModel"
+            id="AddDataOperationToUsageModel">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataToUsageModel"
+            id="AddDataToUsageModel">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.AddDataOperationToSeff"
+            id="AddDataOperationToSeff">
       </javaActions>
    </extension>
 </plugin>

@@ -38,7 +38,6 @@ public class AddDataProcessingContainerToUsageModel implements IExternalJavaActi
 					if(scenBehaviour instanceof EntryLevelSystemCall || scenBehaviour instanceof Delay) {
 						if(StereotypeAPI.isStereotypeApplicable(scenBehaviour, ProfileConstants.STEREOTYPE_NAME_DATA_PROCESSING)) {
 							return true;
-						}else {
 						}
 					}
 				}

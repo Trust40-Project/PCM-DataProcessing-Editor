@@ -9,6 +9,7 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.CharacteristicServices;
 import org.palladiosimulator.editors.sirius.repository.dataprocessingextension.custom.service.Services;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Characteristic;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 
 public class RemoveCharacteristicFromResourceEnvironment implements IExternalJavaAction {
@@ -29,7 +30,11 @@ public class RemoveCharacteristicFromResourceEnvironment implements IExternalJav
 			CharacteristicServices.removeCharacteristic(eObject, characteristic);
 		}
 		for (EObject eObject : resInvironment.getResourceContainer_ResourceEnvironment()) {
-			CharacteristicServices.removeCharacteristic(eObject, characteristic);			
+			CharacteristicServices.removeCharacteristic(eObject, characteristic);
+			for (EObject eObject2 : ((ResourceContainer)eObject).getNestedResourceContainers__ResourceContainer()) {
+				CharacteristicServices.removeCharacteristic(eObject2, characteristic);
+
+			}
 		}
 	}
 

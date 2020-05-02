@@ -168,6 +168,18 @@ public class Services {
 			}	
 		}
    }
+   
+	@SuppressWarnings("unchecked")
+	public static <T> T loadResource(EObject resource, Collection<Object> filterList, Class<T> targetClass) {
+		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
+		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filterList, additionalChildReferences,
+				resource.eResource().getResourceSet());
+		dialog.setProvidedService(targetClass);
+		
+		dialog.open();
+
+		return (T) dialog.getResult();
+	}
     
    
     

@@ -70,7 +70,7 @@ public class AddDataProcessingContainerToSeff implements IExternalJavaAction, Da
 	public void filterDialog(PalladioSelectEObjectDialog dialog, EObject resource) {
 		//filter other models
 		filterOtherModels(dialog, resource);
-		//filter unapplyable 
+		//filter unapplyable Elements
 		removeUnapplyableElements(dialog);
 	}
 	
