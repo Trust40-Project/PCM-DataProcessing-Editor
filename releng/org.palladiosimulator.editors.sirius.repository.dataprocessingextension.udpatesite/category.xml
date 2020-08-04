@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.feature">
+      <category name="org.palladiosimulator.editors.sirius.repository.dataprocessingextension"/>
+   </feature>
+   <feature id="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.feature.source">
+      <category name="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.source"/>
+   </feature>
+   <category-def name="org.palladiosimulator.editors.sirius.repository.dataprocessingextension" label="Data Processing Editor"/>
+   <category-def name="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.source" label="Data Processing Editor Developer Resources"/>
+</site>

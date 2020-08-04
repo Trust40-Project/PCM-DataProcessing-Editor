@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.palladiosimulator.editors.sirius.repository.dataprocessingextension.feature"
+      label="Data Processing Editor Feature"
+      version="1.0.0.qualifier"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license.epl2"
+      license-feature-version="1.0.0">
+
+   <requires>
+      <import plugin="org.palladiosimulator.branding"/>
+   </requires>
+
+   <plugin
+         id="org.palladiosimulator.editors.sirius.repository.DataprocessingExtension"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.editors.sirius.repository.dataprocessingExtension.custom"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

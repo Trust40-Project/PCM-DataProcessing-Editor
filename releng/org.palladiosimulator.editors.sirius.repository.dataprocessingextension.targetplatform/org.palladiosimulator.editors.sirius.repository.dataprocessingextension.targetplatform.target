@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="org.palladiosimulator.pcm.dataprocessing Target Platform" sequenceNumber="1">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.editors.sirius.services" version="tbd"/>
+<unit id="org.palladiosimulator.editors.sirius.custom" version="tbd"/>
+<unit id="org.palladiosimulator.editors.sirius.ui" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-editors-sirius/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.editors.sirius.services" version="tbd"/>
+<unit id="org.palladiosimulator.editors.sirius.custom" version="tbd"/>
+<unit id="org.palladiosimulator.editors.sirius.ui" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-editors-sirius/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.stoex.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-core-commons/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.stoex.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-core-commons/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.pcm" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-core-pcm/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.pcm" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-core-pcm/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.modelversioning.emfprofile.core.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.modelversioning.emfprofile.core.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.architecturaltemplates.api" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-addon-architecturaltemplates/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.architecturaltemplates.api" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-addon-architecturaltemplates/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.mdsdprofiles.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-supporting-mdsdprofiles/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.mdsdprofiles.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-supporting-mdsdprofiles/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.pcm.edit" version="tbd"/>
+<unit id="org.palladiosimulator.editors.commons.dialogs" version="tbd"/>
+<unit id="org.palladiosimulator.editors.commons.tabs" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-editors-commons/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.pcm.edit" version="tbd"/>
+<unit id="org.palladiosimulator.editors.commons.dialogs" version="tbd"/>
+<unit id="org.palladiosimulator.editors.commons.tabs" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-editors-commons/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.pcm.dataprocessing.editor.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/trust40-project/palladio-addons-dataprocessing-metamodel/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.pcm.dataprocessing.editor.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/trust40-project/palladio-addons-dataprocessing-metamodel/nightly/"/>
+</location>
+</locations>
+</target>
